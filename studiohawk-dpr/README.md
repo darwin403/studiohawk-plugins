@@ -1,12 +1,15 @@
-# StudioHawk Weekly PR Updates
+# StudioHawk DPR
 
-A Cowork plugin that drafts weekly digital PR client updates for StudioHawk. It pulls coverage,
-completed work, and outstanding items from Slack, Monday.com, Google Drive, and Gmail, then saves
-a **Gmail draft** for a team member to review and send. It never sends email automatically.
+A Cowork plugin bundling StudioHawk's digital PR (DPR) workflow automations as a growing set of
+skills. Install once, connect the shared connectors (Slack, monday.com, Google Drive, Gmail), and
+each teammate gets every DPR workflow. New automations are added over time as additional skills in
+this same plugin.
 
-## What it does
+## Skills
 
-Every week (or on demand), for a given brand/client, it:
+### `weekly-pr-update`  (available)
+
+Drafts a weekly digital PR client update for a brand. For a given brand it:
 
 1. Loads the brand's saved config — or, on the first run for a brand, runs a **discovery phase**
    that finds the brand's Slack channel, Monday board, coverage sheet rows, and Gmail contacts,
@@ -15,18 +18,23 @@ Every week (or on demand), for a given brand/client, it:
    Google Sheet, completed and outstanding tasks from the brand's **Monday.com** board, and
    context from **Slack** and **Gmail**.
 3. Drafts a client-ready update (coverage achieved, work completed, in progress, action items).
-4. Saves it as a **Gmail draft** for approval. A person reviews and hits send.
+4. Saves it as a **Gmail draft** for approval — it never sends automatically.
 
-## Components
+### `schedule-weekly-pr-updates`  (available)
 
-- **Skill: `weekly-pr-update`** — the core workflow (discovery + gather + draft + Gmail draft).
-- **Skill: `schedule-weekly-pr-updates`** — sets up the recurring Monday 9:00 AM AEST run.
-- **Connectors (`.mcp.json`)** — Slack, monday.com, Google Drive, Gmail.
+Sets up the recurring Monday 9:00 AM AEST run that auto-drafts weekly updates for every brand with
+a saved config.
 
-## Setup
+### More DPR workflows  (coming)
 
-After installing the plugin, connect the four services when prompted (each teammate connects
-their own accounts — this is a one-time per-person login):
+This plugin is designed to grow. Additional DPR automations will be added as new skills here (e.g.
+outreach/pitch tracking, coverage reporting, media-list building). See
+`docs/ADDING-WORKFLOWS.md` for how to add one.
+
+## Connectors
+
+Declared in `.mcp.json`: **Slack**, **monday.com**, **Google Drive**, **Gmail**. Each teammate
+connects their own accounts once when prompted:
 
 - **Slack** — to read client channels
 - **monday.com** — to read each brand's Master Campaign Management board
