@@ -1,0 +1,9 @@
+{
+  "name": "studiohawk-weekly-pr-updates",
+  "version": "0.1.0",
+  "description": "Draft weekly digital PR client updates for StudioHawk by pulling coverage, completed work, and outstanding items from Slack, Monday.com, Google Drive, and Gmail, then saving a Gmail draft for approval.",
+  "author": {
+    "name": "StudioHawk"
+  },
+  "keywords": ["digital-pr", "seo", "client-updates", "weekly-report", "studiohawk"]
+}

@@ -1,0 +1,23 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "studiohawk-plugins",
+  "owner": {
+    "name": "StudioHawk",
+    "email": "skdcodes@gmail.com"
+  },
+  "version": "0.1.0",
+  "description": "StudioHawk internal Claude plugins for digital PR and SEO workflows.",
+  "plugins": [
+    {
+      "name": "studiohawk-weekly-pr-updates",
+      "source": "./studiohawk-weekly-pr-updates",
+      "description": "Draft weekly digital PR client updates by pulling coverage, completed work, and outstanding items from Slack, Monday.com, Google Drive, and Gmail, then saving a Gmail draft for approval.",
+      "version": "0.1.0",
+      "author": {
+        "name": "StudioHawk"
+      },
+      "category": "productivity",
+      "keywords": ["digital-pr", "seo", "client-updates", "weekly-report", "studiohawk"]
+    }
+  ]
+}
