@@ -1,13 +1,13 @@
 ---
 name: weekly-pr-update
 description: >
-  Draft a weekly digital PR client update for a StudioHawk brand/client. Use when the user
-  says things like "draft the weekly update for <brand>", "weekly client update", "PR update
-  for <client>", "run the Monday client updates", "put together this week's coverage report",
-  or when a scheduled weekly-update task runs. Pulls coverage from the "[NEW] Client Link
-  Tracker & Media Requests" Google Sheet, completed work and outstanding items from the brand's
-  Monday.com board, plus context from the brand's Slack channel and Gmail threads, then creates
-  a Gmail DRAFT (never sends) for a team member to review and approve.
+  Draft a weekly digital PR client update for a StudioHawk brand or client. Use when the user
+  says things like "draft the weekly update for a brand", "weekly client update", "PR update
+  for a client", "run the Monday client updates", or "put together this week's coverage report",
+  or when a scheduled weekly-update task runs. Pulls coverage from the Client Link Tracker and
+  Media Requests Google Sheet, completed work and outstanding items from the brand's Monday.com
+  board, plus context from the brand's Slack channel and Gmail threads, then creates a Gmail
+  DRAFT (never sends) for a team member to review and approve.
 metadata:
   version: "0.1.0"
   author: "StudioHawk"

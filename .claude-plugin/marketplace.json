@@ -11,13 +11,19 @@
     {
       "name": "studiohawk-dpr",
       "source": "./studiohawk-dpr",
-      "description": "StudioHawk digital PR workflow automations — a growing suite of skills (starting with weekly client updates) that pull from Slack, Monday.com, Google Drive, and Gmail.",
-      "version": "0.1.0",
+      "description": "StudioHawk digital PR workflow automations \u2014 a growing suite of skills (starting with weekly client updates) that pull from Slack, Monday.com, Google Drive, and Gmail.",
+      "version": "0.1.1",
       "author": {
         "name": "StudioHawk"
       },
       "category": "productivity",
-      "keywords": ["digital-pr", "seo", "studiohawk", "automation", "workflows"]
+      "keywords": [
+        "digital-pr",
+        "seo",
+        "studiohawk",
+        "automation",
+        "workflows"
+      ]
     }
   ]
 }
