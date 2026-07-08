@@ -13,21 +13,19 @@ One skill that takes a team member from first-time setup all the way to a ready-
 optionally onto autopilot. Everything it produces is a **Gmail draft** — nothing is ever sent
 automatically.
 
-For a **first-time user** it runs a guided onboarding with clickable action buttons:
+The **first time a brand is set up** it runs a guided flow with clickable action buttons:
 
 1. States what it will set up, upfront.
 2. **Sets up the brand** — a discovery phase finds the brand's Slack channel, Monday board,
    coverage sheet rows, and Gmail contacts, then saves a reusable config to a shared Google Drive
    folder so the rest of the team benefits.
 3. **Shows a sample email** in chat so they see exactly what a client update will look like.
-4. **Saves their personal email format** — stored per user and applied to all their future
-   updates for every brand.
-5. Offers a **no-send test draft** in Gmail to confirm the flow.
-6. Offers to **set up a weekly schedule** via Cowork's built-in `/schedule` — drafts only.
+4. Offers a **no-send test draft** in Gmail to confirm the flow.
+5. Offers to **set up a weekly schedule** via Cowork's built-in `/schedule` — drafts only.
 
-For a **returning user** it simply drafts the update on demand for the named brand, using their
-saved format. When run **unattended** by a schedule, it loops every configured brand and creates
-drafts with no prompts.
+After that it simply **drafts the update on demand** for the named brand; the user can ask for any
+tweak on the spot (shorter, reorder, add a note). When run **unattended** by a schedule, it loops
+every configured brand and creates drafts with no prompts.
 
 ### More DPR workflows  (coming)
 
@@ -42,21 +40,19 @@ connects their own accounts once when prompted:
 
 - **Slack** — to read client channels
 - **monday.com** — to read each brand's Master Campaign Management board
-- **Google Drive** — to read the coverage sheet and store brand configs and personal formats
+- **Google Drive** — to read the coverage sheet and store brand configs
 - **Gmail** — to create the draft updates
 
 Shared config location (created automatically on first use):
 `Google Drive / StudioHawk PR Automation / Brand Configs / <brand>.config.json`.
-Per-user format:
-`Google Drive / StudioHawk PR Automation / User Preferences / <user-slug>.format.md`.
 
 ## Usage
 
-- Get started: "Set up StudioHawk PR updates" → runs the guided onboarding.
+- Get started: "Set up StudioHawk PR updates" → runs the guided setup.
 - Draft one brand now: "Draft the weekly PR update for <brand>."
 - Add another brand: "Set up a new brand."
-- Change your email format: "Change my email format."
-- Automate it: during onboarding (or "set up the weekly schedule") it hands off to Cowork's
+- Tweak a draft: just ask (e.g. "make it shorter", "drop the intro line").
+- Automate it: during setup (or "set up the weekly schedule") it hands off to Cowork's
   `/schedule` to create Monday 9:00 AM AEST drafts for every brand with a saved config.
 
 ## Notes

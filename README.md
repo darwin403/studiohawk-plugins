@@ -14,12 +14,11 @@ plugin.
 Available skills today:
 
 - **weekly-pr-update** — one guided skill that takes a team member from first-time setup to a
-  ready-to-send draft: it sets up the brand (discovery), shows a sample email, saves the user's
-  personal email format, offers a no-send test draft, and offers to set up a weekly schedule via
-  Cowork's built-in `/schedule`. Pulls coverage from the "[NEW] Client Link Tracker & Media
-  Requests" Google Sheet, completed and outstanding work from the brand's Monday.com board, and
-  context from Slack and Gmail — then saves a **Gmail draft** for review. It never sends
-  automatically.
+  ready-to-send draft: it sets up the brand (discovery), shows a sample email, offers a no-send
+  test draft, and offers to set up a weekly schedule via Cowork's built-in `/schedule`. Pulls
+  coverage from the "[NEW] Client Link Tracker & Media Requests" Google Sheet, completed and
+  outstanding work from the brand's Monday.com board, and context from Slack and Gmail — then
+  saves a **Gmail draft** for review. It never sends automatically.
 
 Requires connecting: Slack, monday.com, Google Drive, Gmail (each teammate connects their own
 accounts once).
