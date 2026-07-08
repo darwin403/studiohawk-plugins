@@ -9,21 +9,25 @@ this same plugin.
 
 ### `weekly-pr-update`  (available)
 
-Drafts a weekly digital PR client update for a brand. For a given brand it:
+One skill that takes a team member from first-time setup all the way to a ready-to-send draft, and
+optionally onto autopilot. Everything it produces is a **Gmail draft** — nothing is ever sent
+automatically.
 
-1. Loads the brand's saved config — or, on the first run for a brand, runs a **discovery phase**
-   that finds the brand's Slack channel, Monday board, coverage sheet rows, and Gmail contacts,
-   then saves a reusable config to a shared Google Drive folder so the rest of the team benefits.
-2. Gathers the week's data: coverage from the **"[NEW] Client Link Tracker & Media Requests"**
-   Google Sheet, completed and outstanding tasks from the brand's **Monday.com** board, and
-   context from **Slack** and **Gmail**.
-3. Drafts a client-ready update (coverage achieved, work completed, in progress, action items).
-4. Saves it as a **Gmail draft** for approval — it never sends automatically.
+For a **first-time user** it runs a guided onboarding with clickable action buttons:
 
-### `schedule-weekly-pr-updates`  (available)
+1. States what it will set up, upfront.
+2. **Sets up the brand** — a discovery phase finds the brand's Slack channel, Monday board,
+   coverage sheet rows, and Gmail contacts, then saves a reusable config to a shared Google Drive
+   folder so the rest of the team benefits.
+3. **Shows a sample email** in chat so they see exactly what a client update will look like.
+4. **Saves their personal email format** — stored per user and applied to all their future
+   updates for every brand.
+5. Offers a **no-send test draft** in Gmail to confirm the flow.
+6. Offers to **set up a weekly schedule** via Cowork's built-in `/schedule` — drafts only.
 
-Sets up the recurring Monday 9:00 AM AEST run that auto-drafts weekly updates for every brand with
-a saved config.
+For a **returning user** it simply drafts the update on demand for the named brand, using their
+saved format. When run **unattended** by a schedule, it loops every configured brand and creates
+drafts with no prompts.
 
 ### More DPR workflows  (coming)
 
@@ -38,18 +42,22 @@ connects their own accounts once when prompted:
 
 - **Slack** — to read client channels
 - **monday.com** — to read each brand's Master Campaign Management board
-- **Google Drive** — to read the coverage sheet and store brand configs
+- **Google Drive** — to read the coverage sheet and store brand configs and personal formats
 - **Gmail** — to create the draft updates
 
 Shared config location (created automatically on first use):
 `Google Drive / StudioHawk PR Automation / Brand Configs / <brand>.config.json`.
+Per-user format:
+`Google Drive / StudioHawk PR Automation / User Preferences / <user-slug>.format.md`.
 
 ## Usage
 
+- Get started: "Set up StudioHawk PR updates" → runs the guided onboarding.
 - Draft one brand now: "Draft the weekly PR update for <brand>."
-- First time for a brand: it runs discovery, confirms what it found, and saves the config.
-- Automate it: "Schedule my weekly PR updates" → sets up Monday 9:00 AM AEST drafts for all
-  brands that have a saved config.
+- Add another brand: "Set up a new brand."
+- Change your email format: "Change my email format."
+- Automate it: during onboarding (or "set up the weekly schedule") it hands off to Cowork's
+  `/schedule` to create Monday 9:00 AM AEST drafts for every brand with a saved config.
 
 ## Notes
 

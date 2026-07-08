@@ -13,13 +13,13 @@ plugin.
 
 Available skills today:
 
-- **weekly-pr-update** — drafts a weekly digital PR client update for a brand. Pulls coverage from
-  the "[NEW] Client Link Tracker & Media Requests" Google Sheet, completed and outstanding work
-  from the brand's Monday.com board, and context from Slack and Gmail — then saves a **Gmail
-  draft** for a team member to review and send. It never sends automatically. The first run for a
-  brand runs a discovery phase and saves a reusable brand config to a shared Google Drive folder.
-- **schedule-weekly-pr-updates** — sets up the recurring Monday 9:00 AM AEST run that auto-drafts
-  weekly updates for every brand with a saved config.
+- **weekly-pr-update** — one guided skill that takes a team member from first-time setup to a
+  ready-to-send draft: it sets up the brand (discovery), shows a sample email, saves the user's
+  personal email format, offers a no-send test draft, and offers to set up a weekly schedule via
+  Cowork's built-in `/schedule`. Pulls coverage from the "[NEW] Client Link Tracker & Media
+  Requests" Google Sheet, completed and outstanding work from the brand's Monday.com board, and
+  context from Slack and Gmail — then saves a **Gmail draft** for review. It never sends
+  automatically.
 
 Requires connecting: Slack, monday.com, Google Drive, Gmail (each teammate connects their own
 accounts once).
@@ -33,16 +33,17 @@ In Claude Code or the Cowork desktop app, add this marketplace, then install the
 /plugin install studiohawk-dpr@studiohawk-plugins
 ```
 
-After installing, connect the four services when prompted. Then try:
+After installing, connect the four services when prompted. Then get started:
+
+```
+Set up StudioHawk PR updates
+```
+
+This runs a guided onboarding (brand setup, sample email, saved format, optional test draft, and
+an optional weekly schedule). Afterward, draft anytime with:
 
 ```
 Draft the weekly PR update for <brand>
-```
-
-To automate it:
-
-```
-Schedule my weekly PR updates
 ```
 
 ## Updating
@@ -63,6 +64,6 @@ studiohawk-plugins/
     ├── .claude-plugin/plugin.json
     ├── .mcp.json                 # connector declarations
     ├── docs/ADDING-WORKFLOWS.md  # how to add a new DPR workflow skill
-    ├── skills/                   # weekly-pr-update, schedule-weekly-pr-updates
+    ├── skills/                   # weekly-pr-update (setup -> draft -> schedule)
     └── README.md
 ```

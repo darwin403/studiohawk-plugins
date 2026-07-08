@@ -1,118 +1,138 @@
 ---
 name: weekly-pr-update
 description: >
-  Draft a weekly digital PR client update for a StudioHawk brand or client. Use when the user
-  says things like "draft the weekly update for a brand", "weekly client update", "PR update
-  for a client", "run the Monday client updates", or "put together this week's coverage report",
-  or when a scheduled weekly-update task runs. Pulls coverage from the Client Link Tracker and
-  Media Requests Google Sheet, completed work and outstanding items from the brand's Monday.com
-  board, plus context from the brand's Slack channel and Gmail threads, then creates a Gmail
-  DRAFT (never sends) for a team member to review and approve.
+  StudioHawk digital PR client updates, end to end. Use when a user says things like "set up
+  StudioHawk PR updates", "get started with weekly PR updates", "onboard me to PR updates",
+  "draft the weekly update for a brand", "weekly client update", "PR update for a client", "run
+  the Monday client updates", or "put together this week's coverage report", or when a scheduled
+  task runs. For a first-time user it walks through brand setup, shows a sample email, saves the
+  user's preferred email format, offers a no-send test draft, and offers to set up a recurring
+  weekly schedule. For returning users it drafts the update on demand. Pulls coverage from the
+  Client Link Tracker and Media Requests Google Sheet, completed and outstanding work from the
+  brand's Monday.com board, and context from Slack and Gmail, then creates a Gmail DRAFT that a
+  team member reviews and sends. Never sends automatically.
 metadata:
-  version: "0.1.0"
+  version: "0.2.0"
   author: "StudioHawk"
 ---
 
-# Weekly PR Client Update
+# StudioHawk Weekly PR Update
 
-Draft a weekly digital PR progress update for a single StudioHawk brand and leave it as a
-Gmail **draft** for human approval. Never send email automatically.
+One skill that takes a team member all the way from first-time setup to a ready-to-send draft,
+and optionally onto autopilot. It covers brand setup, on-demand drafting, a saved personal email
+format, an optional test draft, and an optional weekly schedule. Everything it produces is a
+Gmail **draft** — nothing is ever sent automatically.
+
+## Say the outcomes upfront
+
+The first time you help a person (or whenever they ask "what does this do"), tell them plainly
+what this skill will set up, so there are no surprises:
+
+1. **Set up a brand** — find its Slack channel, Monday board, coverage sheet rows, and client contacts once.
+2. **Show a sample email** — so they see exactly what a client update will look like.
+3. **Save their email format** — their personal preference, applied to all their future updates.
+4. **Optional test draft** — a real Gmail draft to check the flow (no email is sent).
+5. **Optional weekly schedule** — drafts appear automatically each week, still never sent.
+
+Then reassure: "Nothing is ever emailed automatically — every update is a draft you review and send."
 
 ## Golden rules
 
 1. **Never send.** Only ever create a Gmail *draft*. A human reviews and sends it.
-2. **One brand at a time.** Each run targets one brand/client. If asked to run "all clients",
-   loop: run the full process for each brand sequentially.
-3. **Config first.** Every brand has a saved config file in the shared Drive folder
-   `StudioHawk PR Automation / Brand Configs`. If it exists, load it. If it does NOT exist,
-   run the Discovery phase first (see below), then save a config before drafting.
-4. **Cite sources.** In the draft's internal notes, keep links back to the Slack messages,
-   Monday items, and sheet rows used, so the reviewer can verify quickly.
-5. **When unsure, ask.** If the brand can't be identified confidently, or discovery finds
-   multiple candidate channels/boards, ask the user to confirm rather than guessing.
+2. **Use action buttons.** For every decision, ask with the AskUserQuestion tool (clear, short
+   options, one question at a time) rather than a wall of text. Always allow a free-text option
+   so the person can describe something specific.
+3. **Personal format is per user; brand config is shared.** Load the current user's saved format
+   for tone/structure; load the shared brand config for sources and recipients.
+4. **One brand at a time.** Each interactive run targets one brand. Scheduled runs loop brands.
+5. **Cite sources, never fabricate.** Link the Slack messages, Monday items, and sheet rows used.
+   If a source is empty for the window, say "nothing this week" rather than inventing content.
 
-## Inputs
+## Routing — decide the mode first
 
-Determine the target brand from the user's request (e.g. "draft the weekly update for Acme").
-If no brand is given and this is a scheduled run, read the brand list from
-`StudioHawk PR Automation / Brand Configs` and process each saved brand.
+1. **Identify the user.** Use the connected Gmail account's address to derive a `user-slug`
+   (e.g. `jane.doe@studiohawk.com.au` -> `jane-doe`). This keys their personal format file.
+2. **Load their personal format** from Google Drive:
+   `StudioHawk PR Automation / User Preferences / <user-slug>.format.md` (see
+   `references/personal-format.md`).
+3. **Pick the mode:**
+   - **Unattended / scheduled run** (no human present) -> go to *Unattended run*. Ask nothing.
+   - **No personal format saved** (first-timer) -> run the *Onboarding wizard*.
+   - **Format saved + a brand was named** -> go to *Draft an update* (run discovery first if that
+     brand has no config yet).
+   - **Format saved + nothing specific asked** -> use AskUserQuestion to show a menu: "Draft an
+     update now", "Set up a new brand", "Change my email format", "Set up or change the weekly
+     schedule".
 
-Establish the reporting window: the previous 7 days ending today, unless the user specifies
-otherwise. Record the exact start/end dates and use them in every source query.
+## Onboarding wizard (first-time user)
 
-## Step 1 — Load or create the brand config
+Read `references/onboarding-flow.md` and follow it stage by stage. In short: welcome and state
+the outcomes -> choose the brand -> discover its sources and save a brand config -> build and
+**render a sample email in chat** -> confirm or customize the format with action buttons (loop
+until approved) -> save their personal format -> offer a no-send test draft -> offer to create a
+weekly schedule -> recap what was set up.
 
-Search Google Drive for the folder `StudioHawk PR Automation / Brand Configs` and a file named
-`<brand-slug>.config.json`. (Create the folder the first time it is needed.)
+## Draft an update (on-demand)
 
-- **Config found** → read it and continue to Step 2.
-- **Config not found** → run the **Discovery phase**. Read
-  `references/discovery-playbook.md` and follow it end to end. It produces a config that must be
-  saved to Drive using the schema in `references/brand-config-schema.md` before continuing.
+1. **Brand config** — load `StudioHawk PR Automation / Brand Configs / <brand-slug>.config.json`.
+   If missing, run discovery first (`references/discovery-playbook.md`) and save the config
+   (`references/brand-config-schema.md`).
+2. **Reporting window** — the previous 7 days ending today unless the user says otherwise. Record
+   exact start/end dates and scope every source query to them.
+3. **Gather data** — coverage from the `[NEW] Client Link Tracker & Media Requests` sheet;
+   completed and outstanding work from the brand's Monday.com board; context from Slack and Gmail.
+   See `references/report-template.md` for what maps into each section.
+4. **Compose** — follow the user's saved personal format. If none exists yet, fall back to the
+   default structure in `references/report-template.md`. Keep it warm, concise, client-appropriate.
+5. **Create the Gmail draft (never send)** — addressed to the client recipient(s) in the config,
+   subject `<Brand> — Weekly PR Update (w/e <week-ending date>)`. If the config marks the client
+   address "unverified", draft to the internal owner instead and flag it.
+6. **Report back** — brand, window, a short summary (coverage count, tasks completed, client
+   action items), the draft subject, and links to the key sources used.
 
-The config tells you exactly which Slack channel(s), Monday board, Drive sheets/tabs, Gmail
-label/contacts, and client recipient(s) belong to this brand — so later runs are fast and
-consistent.
+## Set up or change the schedule
 
-## Step 2 — Gather this week's data
+Do **not** build scheduling logic in this skill. When the user opts in, hand off to Cowork's
+built-in scheduling skill (the `/schedule` skill). First confirm timing with action buttons
+(default **Mondays 9:00 AM AEST**), then create a recurring task with:
 
-Pull from each source using the identifiers in the config. Scope every query to the reporting
-window. Read `references/report-template.md` for exactly what maps into each section.
+- **Cron (local time):** `0 9 * * 1` (Monday 9:00 AM; the machine's timezone should be
+  Australia/Sydney for AEST). Adjust if the user picked a different day/time.
+- **Scope:** all brands with a saved config in `StudioHawk PR Automation / Brand Configs`.
+- **Prompt for the task:** "Run the StudioHawk weekly-pr-update skill unattended for every brand
+  with a saved config. Draft each update as a Gmail DRAFT and never send. Report the brands
+  processed, the coverage/tasks/action-item counts, and the draft subject lines."
 
-**Coverage achieved** — from the Google Sheet `[NEW] Client Link Tracker & Media Requests`:
-read the brand's tab/rows, filter to links/placements secured within the window (published date
-or "live" status in the window). Capture: publication/outlet, headline/anchor, URL, link type
-(follow/no-follow/brand mention), domain authority if present, and date.
+Confirm afterward: the day/time/timezone, which brands are covered, and that output appears as
+Gmail drafts awaiting review. Remind them nothing is sent automatically.
 
-**Tasks completed** — from the brand's Monday.com board: items moved to Done/Complete within the
-window, plus notable updates. Also scan the brand's Slack channel for confirmations of pitches
-sent, assets delivered, or work signed off.
+## Unattended run (scheduled)
 
-**Outstanding action items / client requests** — from Monday: items that are in-progress,
-blocked, waiting-on-client, or due soon. From Gmail (brand label/thread) and Slack: any open
-questions, approvals needed, or requests the client made that are not yet resolved. Clearly
-separate "we're working on it" from "we need something from the client".
+When triggered by a scheduled task, ask **no** questions. For each brand with a saved config,
+run *Draft an update* using the owner's saved personal format, and create a Gmail draft. Produce
+one short run report: brands processed, per-brand counts, draft subjects, and anything skipped
+(e.g. a brand with no config yet).
 
-**Context/colour** — skim the brand's Slack channel and recent Gmail thread for anything that
-should be acknowledged (wins to celebrate, issues to flag). Do not include anything sensitive
-or internal-only in the client-facing draft.
+## Personal email format
 
-If a source returns nothing for the window, note "nothing this week" internally rather than
-inventing content. Never fabricate coverage, metrics, or dates.
+Each team member has one saved format that applies to all their client updates across every
+brand, so their drafts always read the way they want. It is created during onboarding (after they
+approve the sample) and can be changed anytime they say "change my email format". Details and the
+storage location are in `references/personal-format.md`.
 
-## Step 3 — Draft the update
+## Data sources
 
-Compose the client-facing update following `references/report-template.md`. Keep it warm,
-concise, and client-appropriate — this is going to an external client. Structure:
-
-1. Short intro line with the reporting week.
-2. **Coverage achieved this week** — the wins, with outlet + link.
-3. **Work completed** — what the team delivered.
-4. **In progress / next steps** — what's underway.
-5. **Action items for you** — anything the client needs to review, approve, or provide. Omit
-   this section if there are genuinely no client actions.
-
-If a `my-writing-style` skill is available, apply it so the draft matches the team's voice.
-
-## Step 4 — Create the Gmail draft (never send)
-
-Create a Gmail **draft** (do not send) addressed to the client recipient(s) from the config,
-with the account owner's usual signature. Subject line format:
-`<Brand> — Weekly PR Update (<week ending date>)`.
-
-Leave the recipient as configured, but if the config marks the client email as "unverified",
-create the draft addressed to the managing team member instead and note that the client
-address needs confirming. When in doubt, draft to the internal owner, not the client.
-
-## Step 5 — Report back to the user
-
-Tell the user: the brand, the reporting window, a 3-4 line summary of what's in the draft
-(coverage count, tasks completed count, number of client action items), and confirm the Gmail
-draft was created (with its subject). Remind them it is a draft awaiting their review and send.
-Provide links to the key sources used.
+| Source | Used for |
+| --- | --- |
+| Google Sheet `[NEW] Client Link Tracker & Media Requests` | Coverage secured in the window |
+| Monday.com board (brand-specific) | Work completed, in-progress, and client-blocked items |
+| Slack (brand channel) | Confirmations, context, colour |
+| Gmail (brand label/threads) | Open client asks, approvals, recipient contacts |
 
 ## Reference files
 
+- `references/onboarding-flow.md` — the first-time wizard, stage by stage, with the action-button options.
+- `references/personal-format.md` — how each user's saved email format is stored and applied.
 - `references/discovery-playbook.md` — first-run process to identify a brand's sources and build its config.
 - `references/brand-config-schema.md` — exact JSON schema for a saved brand config.
-- `references/report-template.md` — the client-update structure and what data maps into each section.
+- `references/report-template.md` — the default client-update structure and source-to-section mapping.
