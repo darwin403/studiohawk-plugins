@@ -1,7 +1,7 @@
 {
   "name": "studiohawk-dpr",
-  "version": "0.3.1",
-  "description": "StudioHawk digital PR workflow automations. A growing suite of skills for the DPR team, weekly client updates and press-release fact-checking, that pull from Slack, Monday.com, Google Drive, and Gmail.",
+  "version": "0.2.1",
+  "description": "StudioHawk digital PR workflow automations. A growing suite of skills for the DPR team — starting with weekly client updates — that pull from Slack, Monday.com, Google Drive, and Gmail.",
   "author": {
     "name": "StudioHawk"
   },
