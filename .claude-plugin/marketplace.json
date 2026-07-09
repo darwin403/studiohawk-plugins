@@ -1,12 +1,13 @@
 {
-  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
   "name": "studiohawk-plugins",
   "owner": {
     "name": "StudioHawk",
     "email": "skdcodes@gmail.com"
   },
-  "version": "0.1.0",
-  "description": "StudioHawk internal Claude plugins for digital PR and SEO workflows.",
+  "metadata": {
+    "version": "0.1.0",
+    "description": "StudioHawk internal Claude plugins for digital PR and SEO workflows."
+  },
   "plugins": [
     {
       "name": "studiohawk-dpr",
