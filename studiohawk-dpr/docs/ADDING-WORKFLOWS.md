@@ -44,6 +44,12 @@ Guidelines for the description:
   trigger the skill, not a slash command label.
 - Lead with trigger phrases teammates will actually type.
 - Name the connectors and the concrete deliverable.
+- **Keep the frontmatter `description` parser-safe:** no `&`, no angle brackets `< >`, and no
+  square brackets `[ ]`. The plugin directory's frontmatter parser chokes on these and silently
+  skips the whole skill (it just won't appear in the available skills list). Use plain words
+  instead — write "for a brand" rather than `<brand>`, and spell out sheet/board names without
+  brackets. These characters are fine in the SKILL.md **body** and in `references/`, just not in
+  the frontmatter description. (This has bitten two skills already.)
 
 Guidelines for the body:
 
