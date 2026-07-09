@@ -3,7 +3,9 @@
   "version": "0.3.1",
   "description": "StudioHawk digital PR workflow automations. A growing suite of skills for the DPR team, weekly client updates and press-release fact-checking, that pull from Slack, Monday.com, Google Drive, and Gmail.",
   "author": {
-    "name": "StudioHawk"
+    "name": "StudioHawk",
+    "email": "skdcodes@gmail.com"
   },
+  "repository": "https://github.com/darwin403/studiohawk-plugins",
   "keywords": ["digital-pr", "seo", "studiohawk", "automation", "client-updates", "workflows"]
 }

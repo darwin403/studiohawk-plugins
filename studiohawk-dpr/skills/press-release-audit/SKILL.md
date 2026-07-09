@@ -1,18 +1,6 @@
 ---
 name: press-release-audit
-description: >
-  StudioHawk press-release fact-check and audit. Use when a user says things like "audit the
-  press release for a brand", "fact-check the press release", "review the press release before
-  approval", or "check the PR in dpr-approvals". Works from the review thread the team posts in
-  the Slack dpr-approvals channel (titled like "Luxo Living PR for review" with a Google Doc
-  link). It reads the press-release Google Doc, then searches the brand's Google Drive folder for
-  the underlying data file and the methodology document, and treats those two as the only sources
-  of truth. It flags methodology mismatches, overstated or unsupported claims, wrong statistics,
-  and out-of-scope claims, and can explain any ranking on request. Findings are reported in chat
-  only. It never edits the doc, and never posts to Slack automatically.
-metadata:
-  version: "0.1.1"
-  author: "StudioHawk"
+description: StudioHawk press-release fact-check and audit. Use when a user says things like "audit the press release for a brand", "fact-check the press release", "review the press release before approval", or "check the PR in dpr-approvals". Works from the review thread the team posts in the Slack dpr-approvals channel (titled like "Luxo Living PR for review" with a Google Doc link). It reads the press-release Google Doc, then searches the brand's Google Drive folder for the underlying data file and the methodology document, and treats those two as the only sources of truth. It flags methodology mismatches, overstated or unsupported claims, wrong statistics, and out-of-scope claims, and can explain any ranking on request. Findings are reported in chat only. It never edits the doc, and never posts to Slack automatically.
 ---
 
 # StudioHawk Press-Release Audit
