@@ -19,6 +19,12 @@ Available skills today:
   coverage from the "[NEW] Client Link Tracker & Media Requests" Google Sheet, completed and
   outstanding work from the brand's Monday.com board, and context from Slack and Gmail — then
   saves a **Gmail draft** for review. It never sends automatically.
+- **press-release-audit** — fact-checks a press release before final approval. Name a PR (e.g.
+  "audit the Luxo Living PR") and it finds the review thread in the `dpr-approvals` Slack channel,
+  opens the linked Google Doc, and searches the brand's Google Drive folder for the raw data file
+  and methodology document. Using those two as the only sources of truth, it lists the
+  methodology's limitations and flags mismatches, overstated claims, wrong statistics, and
+  out-of-scope claims — reported in **chat only**. It never edits the doc or posts to Slack.
 
 Requires connecting: Slack, monday.com, Google Drive, Gmail (each teammate connects their own
 accounts once).
@@ -63,6 +69,6 @@ studiohawk-plugins/
     ├── .claude-plugin/plugin.json
     ├── .mcp.json                 # connector declarations
     ├── docs/ADDING-WORKFLOWS.md  # how to add a new DPR workflow skill
-    ├── skills/                   # weekly-pr-update (setup -> draft -> schedule)
+    ├── skills/                   # weekly-pr-update, press-release-audit
     └── README.md
 ```

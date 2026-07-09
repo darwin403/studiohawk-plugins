@@ -27,6 +27,17 @@ After that it simply **drafts the update on demand** for the named brand; the us
 tweak on the spot (shorter, reorder, add a note). When run **unattended** by a schedule, it loops
 every configured brand and creates drafts with no prompts.
 
+### `press-release-audit`  (available)
+
+Fact-checks a press release before it goes for final approval. Triggered on demand by naming a PR
+(e.g. "audit the Luxo Living PR"), it finds the review thread in the `dpr-approvals` Slack channel,
+opens the linked press-release Google Doc, then searches the brand's Google Drive folder for the
+**raw data file** and the **methodology document**. Treating those two as the only sources of
+truth, it lists the methodology's limitations and flags methodology mismatches, overstated or
+unsupported claims, wrong statistics, and out-of-scope claims — each with the exact quote, the
+source, and a suggested fix. It can also explain why one item is ranked above another. Findings are
+reported in **chat only**: it never edits the doc and never posts to Slack.
+
 ### More DPR workflows  (coming)
 
 This plugin is designed to grow. Additional DPR automations will be added as new skills here (e.g.
