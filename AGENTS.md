@@ -51,6 +51,26 @@ directories. Do not "simplify" by moving the plugin to the root, even for a sing
 - Plugin name and marketplace name being **identical is fine** — that was verified working and is
   not the cause of sync failures.
 
+## The #2 trap: a skill silently missing from the available-skills list
+
+If a skill isn't detected (it just never appears), the cause is almost always its
+`SKILL.md` **YAML frontmatter `description`**. The plugin directory's frontmatter parser chokes on
+`&`, angle brackets `< >`, square brackets `[ ]`, or **any non-ASCII character** — em-dashes (`—`),
+en-dashes (`–`), and smart/curly quotes (`“ ” ‘ ’`) — and **silently skips the whole skill** with no
+error. The other skills in the same plugin still load, so it looks like a per-skill glitch.
+
+This has recurred multiple times (an em-dash regressed `press-release-audit` even after the bracket
+rule was documented). Before committing any SKILL.md, check the frontmatter block:
+
+```
+grep -nP '[&<>\[\]]|[^\x00-\x7F]' <skill>/SKILL.md   # inspect the frontmatter matches
+```
+
+Fix by rewording with plain ASCII (plain hyphen `-`, comma, or restructured phrasing). These
+characters are fine in the SKILL.md **body** and in `references/` — only the frontmatter
+`description` is parsed strictly. See `studiohawk-dpr-toolkit/docs/ADDING-WORKFLOWS.md` for the full
+rule.
+
 ## Deploying changes
 
 The desktop app syncs from **GitHub**, not the local working tree. Any manifest/structure change

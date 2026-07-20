@@ -44,12 +44,16 @@ Guidelines for the description:
   trigger the skill, not a slash command label.
 - Lead with trigger phrases teammates will actually type.
 - Name the connectors and the concrete deliverable.
-- **Keep the frontmatter `description` parser-safe:** no `&`, no angle brackets `< >`, and no
-  square brackets `[ ]`. The plugin directory's frontmatter parser chokes on these and silently
-  skips the whole skill (it just won't appear in the available skills list). Use plain words
-  instead — write "for a brand" rather than `<brand>`, and spell out sheet/board names without
-  brackets. These characters are fine in the SKILL.md **body** and in `references/`, just not in
-  the frontmatter description. (This has bitten two skills already.)
+- **Keep the frontmatter `description` parser-safe and pure ASCII:** no `&`, no angle brackets
+  `< >`, no square brackets `[ ]`, and no non-ASCII characters — especially em-dashes (`—`), en-dashes
+  (`–`), or smart/curly quotes (`“ ” ‘ ’`). The plugin directory's frontmatter parser chokes on any
+  of these and silently skips the whole skill (it just won't appear in the available skills list).
+  Use plain words and ASCII punctuation instead: write "for a brand" rather than `<brand>`, spell out
+  sheet/board names without brackets, and use a plain hyphen `-`, a comma, or reworded phrasing
+  instead of an em-dash. These characters are fine in the SKILL.md **body** and in `references/`,
+  just not in the frontmatter description. (This has now bitten three skills — an em-dash regressed
+  press-release-audit even after the bracket rule was in place, so check with
+  `grep -nP '[&<>\[\]]|[^\x00-\x7F]'` on the frontmatter before committing.)
 
 Guidelines for the body:
 
