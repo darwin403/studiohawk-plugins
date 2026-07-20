@@ -62,7 +62,7 @@ Guidelines for the body:
 
 Brand configs already live in Google Drive at
 `StudioHawk PR Automation / Brand Configs / <brand-slug>.config.json` (see
-`skills/weekly-pr-update/references/brand-config-schema.md`). New workflows should read the same
+`skills/weekly-client-update/references/brand-config-schema.md`). New workflows should read the same
 config so a brand only has to be discovered once. If your workflow needs extra per-brand fields,
 add them to that schema rather than creating a second config file.
 

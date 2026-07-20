@@ -7,7 +7,7 @@ this same plugin.
 
 ## Skills
 
-### `weekly-pr-update`  (available)
+### `weekly-client-update`  (available)
 
 One skill that takes a team member from first-time setup all the way to a ready-to-send draft, and
 optionally onto autopilot. Everything it produces is a **Gmail draft** — nothing is ever sent
@@ -29,14 +29,19 @@ every configured brand and creates drafts with no prompts.
 
 ### `press-release-audit`  (available)
 
-Fact-checks a press release before it goes for final approval. Triggered on demand by naming a PR
+Reviews a press release before it goes for final approval. Triggered on demand by naming a PR
 (e.g. "audit the Luxo Living PR"), it finds the review thread in the `dpr-approvals` Slack channel,
-opens the linked press-release Google Doc, then searches the brand's Google Drive folder for the
-**raw data file** and the **methodology document**. Treating those two as the only sources of
-truth, it lists the methodology's limitations and flags methodology mismatches, overstated or
-unsupported claims, wrong statistics, and out-of-scope claims — each with the exact quote, the
-source, and a suggested fix. It can also explain why one item is ranked above another. Findings are
-reported in **chat only**: it never edits the doc and never posts to Slack.
+opens the linked press-release Google Doc, and classifies the piece as **data-led**, **expert-led**,
+or **UGC**. For a data-led piece it searches the brand's Google Drive folder for the **raw data
+file** and the **methodology document**, treats those two as the only sources of truth, lists the
+methodology's limitations, and flags methodology mismatches, overstated or unsupported claims, wrong
+statistics, and out-of-scope claims — each with the exact quote, the source, and a suggested fix
+(and it can explain why one item is ranked above another). A single self-sourced stat in an
+expert-led/UGC piece does not trigger a demand for a full methodology. For **every** piece it also
+runs a **completeness & compliance** check: accompanying pitch, imagery and imagery link, client
+quote, expert name/title/headshot, brand tie-in, first-mention client intro, logo in header,
+Archivo size-11 formatting, and legal soundness. Findings are reported in **chat only**: it never
+edits the doc and never posts to Slack.
 
 ### More DPR workflows  (coming)
 

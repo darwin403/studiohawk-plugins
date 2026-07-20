@@ -2,6 +2,9 @@
 
 A Claude plugin marketplace for StudioHawk's internal digital PR team workflows.
 
+> **New team member?** Start with the [Team Guide (USAGE.md)](USAGE.md) — a plain-English,
+> non-technical walkthrough of installing and using the toolkit.
+
 ## Plugins
 
 ### studiohawk-dpr-toolkit
@@ -13,18 +16,22 @@ plugin.
 
 Available skills today:
 
-- **weekly-pr-update** — one guided skill that takes a team member from first-time setup to a
+- **weekly-client-update** — one guided skill that takes a team member from first-time setup to a
   ready-to-send draft: it sets up the brand (discovery), shows a sample email, offers a no-send
   test draft, and offers to set up a weekly schedule via Cowork's built-in `/schedule`. Pulls
   coverage from the "[NEW] Client Link Tracker & Media Requests" Google Sheet, completed and
   outstanding work from the brand's Monday.com board, and context from Slack and Gmail — then
   saves a **Gmail draft** for review. It never sends automatically.
-- **press-release-audit** — fact-checks a press release before final approval. Name a PR (e.g.
+- **press-release-audit** — reviews a press release before final approval. Name a PR (e.g.
   "audit the Luxo Living PR") and it finds the review thread in the `dpr-approvals` Slack channel,
-  opens the linked Google Doc, and searches the brand's Google Drive folder for the raw data file
-  and methodology document. Using those two as the only sources of truth, it lists the
-  methodology's limitations and flags mismatches, overstated claims, wrong statistics, and
-  out-of-scope claims — reported in **chat only**. It never edits the doc or posts to Slack.
+  opens the linked Google Doc, and classifies the piece as data-led, expert-led, or UGC. For
+  data-led pieces it searches the brand's Google Drive folder for the raw data file and methodology
+  document, treats those two as the only sources of truth, lists the methodology's limitations, and
+  flags mismatches, overstated claims, wrong statistics, and out-of-scope claims. For every piece it
+  also runs a completeness & compliance check — accompanying pitch, imagery and imagery link, client
+  quote, expert name/title/headshot, brand tie-in, first-mention client intro, logo in header,
+  Archivo size-11 formatting, and legal soundness. Reported in **chat only**. It never edits the doc
+  or posts to Slack.
 
 Requires connecting: Slack, monday.com, Google Drive, Gmail (each teammate connects their own
 accounts once).
@@ -69,6 +76,6 @@ studiohawk-dpr-toolkit/           # repo + marketplace
     ├── .claude-plugin/plugin.json
     ├── .mcp.json                 # connector declarations
     ├── docs/ADDING-WORKFLOWS.md  # how to add a new DPR workflow skill
-    ├── skills/                   # weekly-pr-update, press-release-audit
+    ├── skills/                   # weekly-client-update, press-release-audit
     └── README.md
 ```
