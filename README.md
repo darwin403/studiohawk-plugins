@@ -56,7 +56,7 @@ outreach/pitch tracking, coverage reporting, media-list building). See
 ## Connectors
 
 Declared in `.mcp.json`: **Slack**, **monday.com**, **Google Drive**, **Gmail**. Each teammate
-connects their own accounts once when prompted:
+adds all four upfront in the desktop app under **Customize → Connectors** (their own accounts, once):
 
 - **Slack** — to read client channels
 - **monday.com** — to read each brand's Master Campaign Management board
@@ -68,42 +68,51 @@ Shared config location (created automatically on first use):
 
 ## Install
 
-In Claude Code or the Cowork desktop app, add this marketplace, then install the plugin:
+Everything is done in the **Claude desktop app** — no CLI. See [USAGE.md](USAGE.md) for the full,
+illustrated team walkthrough.
 
-```
-/plugin marketplace add darwin403/studiohawk-dpr-toolkit
-/plugin install studiohawk-dpr-toolkit@studiohawk-dpr-toolkit
-```
+1. **Add connectors** — open **Customize → Connectors** in the sidebar and add **Slack**,
+   **Gmail**, **Google Drive**, and **monday.com**, signing in with your StudioHawk accounts.
+2. **Add the plugin** — open **Customize → Plugins**, and in **Personal plugins** click
+   **"+" → Add marketplace → Add from a repository**, then paste the repo URL:
 
-After installing, connect the four services when prompted. Then get started:
+   ```
+   https://github.com/darwin403/studiohawk-dpr-toolkit
+   ```
 
-```
-Set up StudioHawk PR updates
-```
+   Then click **Browse plugins** and **Install** `studiohawk-dpr-toolkit`.
 
-This runs a guided onboarding (brand setup, sample email, saved format, optional test draft, and
-an optional weekly schedule). Afterward, draft anytime with:
+That's it — the toolkit is installed and ready to use.
 
-```
-Draft the weekly client update for <brand>
-```
+## Using the skills
 
-See [USAGE.md](USAGE.md) for the full team walkthrough.
+You now have two skills in your chat, each with its own slash command. Start a **Cowork chat**
+(select **Cowork** in the message box), begin with the slash command, and ask in plain English —
+brand setup and discovery are handled under the hood.
+
+- **Weekly client update** — `/weekly-client-update`
+
+  ```
+  /weekly-client-update draft this week's update for <brand>
+  ```
+
+- **Press release audit** — `/press-release-audit`
+
+  ```
+  /press-release-audit check the <brand> press release
+  ```
+
+See [USAGE.md](USAGE.md) for the full, plain-English walkthrough of each skill.
 
 ## Updating
 
-To pull the latest version after changes are pushed to this repo:
-
-```
-/plugin marketplace update studiohawk-dpr-toolkit
-```
+Open **Customize → Plugins** in the desktop app, find the **studiohawk-dpr-toolkit** marketplace,
+and click **Update** to pull the latest version.
 
 ## Removing
 
-```
-/plugin uninstall studiohawk-dpr-toolkit@studiohawk-dpr-toolkit
-/plugin marketplace remove studiohawk-dpr-toolkit
-```
+Open **Customize → Plugins**, then **Uninstall** the **studiohawk-dpr-toolkit** plugin — or remove
+its marketplace entirely to delete the source.
 
 ## Repository layout
 

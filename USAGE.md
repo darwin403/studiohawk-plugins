@@ -20,51 +20,63 @@ The toolkit adds two skills to Claude:
 
 ---
 
-## 1. Install it (once)
+## Install
 
-You only do this the first time.
+Do this once. Everything happens in the **Claude desktop app** — no typing of commands.
 
-**Step 1 — Add the toolkit and install it.** Type these two lines to Claude, one at a time:
+### Step 1 — Add your four connectors
 
-```
-/plugin marketplace add darwin403/studiohawk-dpr-toolkit
-/plugin install studiohawk-dpr-toolkit@studiohawk-dpr-toolkit
-```
+1. In the left sidebar, open **Customize → Connectors**.
+2. Browse the connector list and add each of these, signing in with your StudioHawk account:
+   - **Slack**
+   - **Gmail**
+   - **Google Drive**
+   - **monday.com**
 
-**Step 2 — Connect your accounts.** When prompted, connect these four services with your own
-StudioHawk logins (you only do this once):
+Do all four now, so nothing interrupts you later. Each one shows **Connected** when it's done.
 
-- **Slack**
-- **monday.com**
-- **Google Drive**
-- **Gmail**
+### Step 2 — Add the toolkit plugin
 
-That's it — you're ready.
+1. In the left sidebar, open **Customize → Plugins**.
+2. In the **Personal plugins** section, click the **"+"** → **Add marketplace** → **Add from a
+   repository**.
+3. Paste this and let it sync:
+
+   ```
+   https://github.com/darwin403/studiohawk-dpr-toolkit
+   ```
+
+4. Click **Browse plugins**, find **studiohawk-dpr-toolkit**, and click **Install**.
+
+**That's it — installation is done.** You now have both skills available in your chat. Head to
+**Usage** below to start using them.
 
 ---
 
-## 2. Weekly client update
+## Usage
 
-### Start it
+Everything you do runs in a **Cowork chat**. On the home screen, in the message box, select
+**Cowork** (the toggle next to **Chat**), then start your message with the skill's slash command:
 
-The very first time you do a brand, set it up:
+- **Weekly client update** — `/weekly-client-update`
+- **Press release audit** — `/press-release-audit`
 
-```
-Set up StudioHawk PR updates
-```
+Starting with the slash command makes sure Claude runs the right skill. Everything below is typed
+straight into that Cowork chat.
 
-Claude walks you through it with clickable buttons — pick the brand, and it finds the brand's
-Slack channel, monday.com board, coverage sheet, and client contacts for you. You'll see a
-**sample email** so you know exactly what it looks like, and it can save a weekly schedule if you
-want one.
+### Weekly client update
 
-After a brand is set up, just ask for a draft anytime:
+**Start it** — begin with the slash command and add the brand:
 
 ```
-Draft the weekly client update for <brand>
+/weekly-client-update draft this week's update for <brand>
 ```
 
-### What you get
+That's all you do — it finds the brand's Slack channel, monday.com board, coverage sheet, and
+client contacts on its own, pulls this week's info, and hands you a finished draft. The first time
+you name a brand it figures out the details under the hood — you don't set anything up.
+
+**What you get**
 
 - A ready-to-review **Gmail draft** with this week's:
   - **Coverage secured** — placements that went live, with links.
@@ -74,7 +86,7 @@ Draft the weekly client update for <brand>
     hyperlinked so the client can click straight through.
 - A short note back in chat showing where the info came from, so you can double-check quickly.
 
-### Good to know
+**Good to know**
 
 - **It never sends.** The draft sits in your Gmail Drafts until *you* send it.
 - You can **ask for any change** — "make it shorter", "drop the intro", "add a line about the
@@ -83,24 +95,18 @@ Draft the weekly client update for <brand>
   sending — so no broken "request access" links go out.
 - If there's no coverage this week, it says so honestly instead of inventing anything.
 
----
+### Press release audit
 
-## 3. Press release audit
-
-### Start it
-
-Name the press release you want checked:
+**Start it** — begin with the slash command and name the press release:
 
 ```
-Audit the <brand> press release
+/press-release-audit check the <brand> press release
 ```
 
 Claude finds the review thread in the `dpr-approvals` Slack channel, opens the linked Google Doc,
 and pulls the brand's raw data file and methodology document from Google Drive.
 
-### What you get
-
-A checklist **in chat only** covering:
+**What you get** — a checklist **in chat only** covering:
 
 - Claims that don't match the data
 - Overstated or exaggerated wording
@@ -108,43 +114,27 @@ A checklist **in chat only** covering:
 - Claims the methodology doesn't actually support
 - The limitations of the methodology itself
 
-### Good to know
+**Good to know**
 
 - It **only reads** — it never edits the doc or posts to Slack.
 - It uses the real data file and methodology as the source of truth, so it won't guess.
 
 ---
 
-## 4. Updating the plugin
+## Managing the plugin
 
-When the team ships improvements, pull the latest version by typing:
+**Update** — open **Customize → Plugins** in the left sidebar, find the **studiohawk-dpr-toolkit**
+marketplace, and click **Update** to sync the latest version. Your saved brand setups are kept —
+you don't need to redo anything.
 
-```
-/plugin marketplace update studiohawk-dpr-toolkit
-```
-
-Your saved brand setups are kept — you don't need to redo anything.
-
----
-
-## 5. Removing the plugin
-
-If you ever need to remove it:
-
-```
-/plugin uninstall studiohawk-dpr-toolkit@studiohawk-dpr-toolkit
-```
-
-To also remove the toolkit source completely:
-
-```
-/plugin marketplace remove studiohawk-dpr-toolkit
-```
+**Remove** — in **Customize → Plugins**, click **Uninstall** on the **studiohawk-dpr-toolkit**
+plugin to turn it off, or remove its marketplace to delete the source completely.
 
 ---
 
 ## Need a hand?
 
-- **A service isn't connected?** Claude will tell you which one and prompt you to connect it.
+- **A service isn't connected?** Open **Customize → Connectors** and make sure all four (Slack,
+  Gmail, Google Drive, monday.com) show **Connected**.
 - **Something looks off in a draft?** Just tell Claude what to change — it's built for that.
 - **Stuck?** Ask in the team's internal channel, or ping whoever set up the toolkit.
