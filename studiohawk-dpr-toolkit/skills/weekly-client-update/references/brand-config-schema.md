@@ -51,8 +51,25 @@ source of truth the weekly-update skill reads on every run. Keep it current.
     "label": "Clients/Acme Foods",
     "contacts": ["sam@acmefoods.com"]
   },
-  "campaign_docs": [
-    { "name": "Master Campaign Management - Acme Foods", "link": "https://..." }
+  "reference_docs": [
+    {
+      "name": "Q3 Sustainability Report press release",
+      "type": "press-release",
+      "link": "https://docs.google.com/document/d/1PrEs...xyz",
+      "client_shareable": true
+    },
+    {
+      "name": "Winter Recipes campaign landing page",
+      "type": "campaign",
+      "link": "https://acmefoods.com/campaigns/winter-recipes",
+      "client_shareable": true
+    },
+    {
+      "name": "Master Campaign Management - Acme Foods (internal)",
+      "type": "internal",
+      "link": "https://...",
+      "client_shareable": false
+    }
   ],
   "reporting": {
     "timezone": "Australia/Sydney",
@@ -74,6 +91,14 @@ source of truth the weekly-update skill reads on every run. Keep it current.
 - `coverage_sheet.brand_tab` OR (`filter_column` + `filter_value`) — use whichever isolates this
   brand's rows. Leave the unused one `null`.
 - `coverage_sheet.columns` — maps friendly field names to the actual column headers in the sheet.
+- `reference_docs` — the brand's curated reference library: press releases, campaign/landing
+  pages, and client-facing docs worth linking from the weekly update. Reused every run so the safe,
+  known links don't have to be re-discovered each week.
+  - `type` — one of `press-release`, `campaign`, `asset`, `report`, `doc`, or `internal`.
+  - `client_shareable` — `true` only if the document is client-facing **and** the client can open
+    it (already shared with their domain, or a public URL). Set `false` for anything internal
+    (Monday boards, internal strategy/planning docs, internal Slack). Only `client_shareable: true`
+    entries may appear in the client email; the rest are kept for the team's internal reference.
 - `notes` — free-text, brand-specific quirks worth honouring in the draft.
 - `last_updated` / `last_run` — ISO dates; update `last_run` after each successful draft.
 

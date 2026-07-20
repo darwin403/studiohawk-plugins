@@ -42,6 +42,14 @@ type, DA, and date.
 Also search Drive for any brand-specific campaign folder or "Master Campaign Management" doc if
 one exists, and record its link for reference.
 
+**Reference library (`reference_docs`).** While in Drive, seed the brand's reference library used
+for hyperlinking the weekly update: recent press releases, campaign/landing pages, published
+assets, and any client-facing docs. For each, record `name`, `type`, `link`, and `client_shareable`
+— set `client_shareable: true` only if the doc is client-facing **and** the client can open it
+(shared with their domain or a public URL); mark internal planning/strategy docs and the Monday
+board `client_shareable: false` so they're kept for reference but never emailed to the client. This
+is a starting set; the weekly run also discovers new docs for each window.
+
 ## 4. Gmail — client thread & contacts
 
 Search Gmail for recent threads with the client to identify: the client's contact name(s) and

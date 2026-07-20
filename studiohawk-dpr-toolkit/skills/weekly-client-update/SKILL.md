@@ -1,5 +1,5 @@
 ---
-name: weekly-pr-update
+name: weekly-client-update
 description: StudioHawk digital PR client updates, end to end. Use when a user says things like "set up StudioHawk PR updates", "get started with weekly PR updates", "draft the weekly update for a brand", "weekly client update", "PR update for a client", "run the Monday client updates", or "put together this week's coverage report", or when a scheduled task runs. The first time a brand is set up it runs discovery, shows a sample email, offers a no-send test draft, and offers to set up a recurring weekly schedule. After that it drafts the update on demand. Pulls coverage from the Client Link Tracker and Media Requests Google Sheet, completed and outstanding work from the brand's Monday.com board, and context from Slack and Gmail, then creates a Gmail DRAFT that a team member reviews and sends. Never sends automatically.
 ---
 
@@ -59,8 +59,14 @@ schedule -> recap what was set up and how to run it again.
 3. **Gather data** — coverage from the `[NEW] Client Link Tracker & Media Requests` sheet;
    completed and outstanding work from the brand's Monday.com board; context from Slack and Gmail.
    See `references/report-template.md` for what maps into each section.
-4. **Compose** — follow the default structure in `references/report-template.md`. Keep it warm,
-   concise, and client-appropriate. If a `my-writing-style` skill is available, apply it for voice.
+   - **Reference documents** — assemble the links to hyperlink inline and list at the end: start
+     from the config's `reference_docs` (client_shareable only), add any client-facing docs found in
+     Google Drive for the window (Drive connector), and reuse placement URLs from coverage. Apply
+     the client-appropriateness + access gate in `references/report-template.md` ("Linking
+     references"); never include internal Monday/Slack/strategy sources.
+4. **Compose** — follow the default structure in `references/report-template.md`, including inline
+   hyperlinks on referenced artifacts and the trailing **Reference documents** section. Keep it
+   warm, concise, and client-appropriate. If a `my-writing-style` skill is available, apply it for voice.
 5. **Create the Gmail draft (never send)** — addressed to the client recipient(s) in the config,
    subject `<Brand> — Weekly PR Update (w/e <week-ending date>)`. If the config marks the client
    address "unverified", draft to the internal owner instead and flag it.
@@ -77,7 +83,7 @@ built-in scheduling skill (the `/schedule` skill). First confirm timing with act
 - **Cron (local time):** `0 9 * * 1` (Monday 9:00 AM; the machine's timezone should be
   Australia/Sydney for AEST). Adjust if the user picked a different day/time.
 - **Scope:** all brands with a saved config in `StudioHawk PR Automation / Brand Configs`.
-- **Prompt for the task:** "Run the StudioHawk weekly-pr-update skill unattended for every brand
+- **Prompt for the task:** "Run the StudioHawk weekly-client-update skill unattended for every brand
   with a saved config. Draft each update as a Gmail DRAFT and never send. Report the brands
   processed, the coverage/tasks/action-item counts, and the draft subject lines."
 
@@ -98,6 +104,7 @@ per-brand counts, draft subjects, and anything skipped (e.g. a brand with no con
 | Monday.com board (brand-specific) | Work completed, in-progress, and client-blocked items |
 | Slack (brand channel) | Confirmations, context, colour |
 | Gmail (brand label/threads) | Open client asks, approvals, recipient contacts |
+| Google Drive (config `reference_docs` + window search) | Client-facing press releases, campaigns, and docs to hyperlink and list |
 
 ## Reference files
 
