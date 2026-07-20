@@ -1,6 +1,6 @@
 # Adding a new DPR workflow
 
-`studiohawk-dpr` is designed to grow. Each digital PR workflow lives as its own **skill** inside
+`studiohawk-dpr-toolkit` is designed to grow. Each digital PR workflow lives as its own **skill** inside
 this one plugin, so teammates get every new workflow automatically the next time the marketplace
 updates. This guide explains how to add one.
 
@@ -9,7 +9,7 @@ updates. This guide explains how to add one.
 Add a new folder under `skills/` named in kebab-case after the workflow, with a `SKILL.md` inside:
 
 ```
-studiohawk-dpr/
+studiohawk-dpr-toolkit/
 └── skills/
     └── <your-workflow-name>/
         ├── SKILL.md
@@ -77,7 +77,7 @@ only when needed.
 - Add the new skill to the plugin `README.md` "Skills" list and to the marketplace `README.md`.
 - Bump the `version` in `.claude-plugin/plugin.json` and in the marketplace entry if you want a
   clean update signal.
-- Commit and push. Teammates pick it up with `/plugin marketplace update studiohawk-plugins`.
+- Commit and push. Teammates pick it up with `/plugin marketplace update studiohawk-dpr-toolkit`.
 
 ## Connectors
 

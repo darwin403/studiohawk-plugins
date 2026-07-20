@@ -1,12 +1,12 @@
-# StudioHawk Plugins
+# StudioHawk DPR Toolkit
 
-A Claude plugin marketplace for StudioHawk's digital PR and SEO workflows.
+A Claude plugin marketplace for StudioHawk's internal digital PR team workflows.
 
 ## Plugins
 
-### studiohawk-dpr
+### studiohawk-dpr-toolkit
 
-StudioHawk's digital PR (DPR) workflow automations, bundled as a growing suite of skills. Install
+The StudioHawk DPR Toolkit — the internal suite of digital PR (DPR) workflow skills. Install
 once, connect the shared connectors (Slack, monday.com, Google Drive, Gmail), and every teammate
 gets each DPR workflow. New automations are added over time as additional skills in this same
 plugin.
@@ -34,8 +34,8 @@ accounts once).
 In Claude Code or the Cowork desktop app, add this marketplace, then install the plugin:
 
 ```
-/plugin marketplace add darwin403/studiohawk-plugins
-/plugin install studiohawk-dpr@studiohawk-plugins
+/plugin marketplace add darwin403/studiohawk-dpr-toolkit
+/plugin install studiohawk-dpr-toolkit@studiohawk-dpr-toolkit
 ```
 
 After installing, connect the four services when prompted. Then get started:
@@ -56,16 +56,16 @@ Draft the weekly PR update for <brand>
 To pull the latest version after changes are pushed to this repo:
 
 ```
-/plugin marketplace update studiohawk-plugins
+/plugin marketplace update studiohawk-dpr-toolkit
 ```
 
 ## Repository layout
 
 ```
-studiohawk-plugins/
+studiohawk-dpr-toolkit/           # repo + marketplace
 ├── .claude-plugin/
 │   └── marketplace.json          # marketplace manifest (lists the plugins)
-└── studiohawk-dpr/               # the DPR workflow suite plugin
+└── studiohawk-dpr-toolkit/       # the DPR workflow suite plugin
     ├── .claude-plugin/plugin.json
     ├── .mcp.json                 # connector declarations
     ├── docs/ADDING-WORKFLOWS.md  # how to add a new DPR workflow skill

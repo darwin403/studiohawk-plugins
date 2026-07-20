@@ -1,4 +1,4 @@
-# StudioHawk DPR
+# StudioHawk DPR Toolkit
 
 A Cowork plugin bundling StudioHawk's digital PR (DPR) workflow automations as a growing set of
 skills. Install once, connect the shared connectors (Slack, monday.com, Google Drive, Gmail), and
