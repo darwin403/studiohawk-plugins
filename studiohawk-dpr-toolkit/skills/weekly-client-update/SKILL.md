@@ -57,7 +57,9 @@ schedule -> recap what was set up and how to run it again.
 2. **Reporting window** — the previous 7 days ending today unless the user says otherwise. Record
    exact start/end dates and scope every source query to them.
 3. **Gather data** — coverage from the `[NEW] Client Link Tracker & Media Requests` sheet;
-   completed and outstanding work from the brand's Monday.com board; context from Slack and Gmail.
+   completed work from the brand's Monday.com board; context from Slack and Gmail. The
+   **Outstanding** section is consolidated across *every* source — Monday active + blocked items,
+   open media requests in the sheet, and unresolved Gmail/Slack threads — not Monday alone.
    See `references/report-template.md` for what maps into each section.
    - **Reference documents** — assemble the links to hyperlink inline and list at the end: start
      from the config's `reference_docs` (client_shareable only), add any client-facing docs found in
@@ -101,7 +103,7 @@ per-brand counts, draft subjects, and anything skipped (e.g. a brand with no con
 | Source | Used for |
 | --- | --- |
 | Google Sheet `[NEW] Client Link Tracker & Media Requests` | Coverage secured in the window |
-| Monday.com board (brand-specific) | Work completed, in-progress, and client-blocked items |
+| Monday.com board (brand-specific) | Work completed, outstanding (in-progress + blocked), and client-action items |
 | Slack (brand channel) | Confirmations, context, colour |
 | Gmail (brand label/threads) | Open client asks, approvals, recipient contacts |
 | Google Drive (config `reference_docs` + window search) | Client-facing press releases, campaigns, and docs to hyperlink and list |

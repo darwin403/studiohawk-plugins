@@ -9,7 +9,7 @@ client**, so keep it warm, clear, and free of internal jargon or sensitive inter
 | --- | --- | --- |
 | Coverage achieved | `[NEW] Client Link Tracker & Media Requests` sheet (brand rows), corroborated by Slack | Placements that went live in the window: outlet, headline/anchor, link, link type, DA if available |
 | Work completed | Monday board items marked Done in the window; Slack sign-offs | Pitches sent, assets delivered, campaigns launched, milestones hit |
-| In progress / next steps | Monday items in active groups (not done, not blocked-on-client) | What the team is actively working on and what's coming next |
+| Outstanding | Monday items in active groups (not done), Monday blocked/stuck items, open media requests in the sheet, unresolved Gmail/Slack threads | Everything still open on our (or the joint) side: active work, what's next, blocked items, and pitches/requests awaiting a response — a single consolidated view across all sources |
 | Action items for you | Monday "waiting on client" items; open asks in Gmail/Slack | Only things the client must review, approve, or provide |
 | Reference documents | Config `reference_docs` (client_shareable) + docs discovered in Drive for the window + placement URLs | A consolidated, deduped list of every client-facing document referenced above, for easy client reference |
 
@@ -31,9 +31,11 @@ Work completed
 - <Item> — <one-line outcome>
 - <Item> — ...
 
-In progress / what's next
+Outstanding
 - <Item> — <status / expected timing>
-- <Item> — ...
+- <Blocked item> — <what it's waiting on>
+- <Media request / pitch> — <outlet, awaiting response>
+(Consolidate everything still open across sources; omit the whole section if nothing is outstanding.)
 
 Action items for you
 - <What we need> — <why / by when>
@@ -56,7 +58,10 @@ Thanks,
 - Quantify where honest data exists (number of placements, DA, pitches sent). Never invent
   numbers, dates, or outlets.
 - One line per item; link every placement.
-- Keep "Action items for you" short and specific — this is what drives the client to respond.
+- "Outstanding" is the single home for everything still open on our side — pull it from every
+  source (Monday active + blocked, media requests, unresolved Gmail/Slack), deduped by item.
+- Keep "Action items for you" short and specific — this is what drives the client to respond. An
+  item belongs in one section only: if the client must act, it goes here, not in "Outstanding".
 - If a `my-writing-style` skill is available, match the team's voice.
 - Reporting window and dates come from the config timezone (default Australia/Sydney).
 
