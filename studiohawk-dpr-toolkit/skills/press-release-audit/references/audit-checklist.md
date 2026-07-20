@@ -1,9 +1,15 @@
-# Audit Checklist
+# Audit Checklist (fact-check track)
 
-Run this once you have the press release, the confirmed data file + tab, and the methodology
-document (see `source-discovery.md`). The data file and methodology are the **only** sources of
-truth. Do not use outside knowledge, training data, or assumptions. If a claim can't be verified
-from those two files, say so explicitly — never guess.
+This is the **fact-check** track, for **data-led** pieces. Run it once you have the press release,
+the confirmed data file + tab, and the methodology document (see `source-discovery.md`). The data
+file and methodology are the **only** sources of truth. Do not use outside knowledge, training data,
+or assumptions. If a claim can't be verified from those two files, say so explicitly — never guess.
+
+**Match the rigour to the piece.** Only run this full track when the campaign is genuinely
+data-led. For an **expert-led or UGC** piece that cites a **single self-sourced stat**, do not
+demand a raw data file + methodology and do not flag their absence — just note that the stat should
+carry a credible source. Then move to `completeness-checklist.md`, which runs on every piece
+regardless of type.
 
 ## Step 1 — List the methodology's limitations first
 
@@ -44,30 +50,44 @@ For every issue, give three things:
 
 ## Step 4 — Report in chat
 
-Structure the chat report as:
+One combined report covers both tracks — the fact-check (this file) and the completeness &
+compliance checks (`completeness-checklist.md`). For an expert-led/UGC piece with no dataset, drop
+the *Data*, *Methodology*, and *Methodology limitations* blocks and lead with the completeness
+section. Structure it as:
 
 ```
 Files audited
 - Press release: <doc title / link>
-- Data: <file name> — tab "<tab>"
-- Methodology: <file name>
+- Piece type: data-led | expert-led | UGC
+- Data: <file name> — tab "<tab>"        (data-led only)
+- Methodology: <file name>                (data-led only)
 
-Methodology limitations applied
+Methodology limitations applied            (data-led only)
 - Scope: ...
 - Excluded: ...
 - Sources/platforms: ...
 - Weightings: ...
 
-Issues found (<n>)
+Fact-check issues (<n>)                     (data-led only)
 1. [Methodology accuracy] PR says: "..." | Source says: ... | Suggested fix: ...
 2. [Incorrect statistic]  PR says: "..." | Source says: ... (recalculated: ...) | Suggested fix: ...
 ...
-
-(If none: "No issues found. Checked against the limitations listed above — every claim is
+(If none: "No fact-check issues. Checked against the limitations listed above — every claim is
 supported by the data and stays within the methodology's scope.")
+
+Completeness & compliance (<n> flagged)     (every piece)
+- Pitch: present | MISSING
+- Imagery + link: present | MISSING (<which>)
+- Client quote: present | MISSING
+- Experts: all credited | FLAG <expert> missing <name/title/headshot>
+- Brand tie-in: clear | FLAG <why it doesn't tie in / undercuts offering>
+- First-mention intro: proper | FLAG "<bare name>" → "<suggested descriptor>"
+- Logo in header: present | MISSING
+- Formatting (Archivo 11): consistent | FLAG <section> | UNCONFIRMED (not visible in this format)
+- Legal soundness: no obvious risk | FLAG <risk> — recommend legal review
 ```
 
-Then close with the wrap-up from `SKILL.md` §5: tag Dani/Kiran/Georgia on anything uncertain, and
+Then close with the wrap-up from `SKILL.md` §6: tag Dani/Kiran/Georgia on anything uncertain, and
 after corrections, post in the approvals channel and tag Georgia noting the fact-check was done.
 You do not post anything yourself — the reviewer does.
 
