@@ -44,16 +44,22 @@ Guidelines for the description:
   trigger the skill, not a slash command label.
 - Lead with trigger phrases teammates will actually type.
 - Name the connectors and the concrete deliverable.
+- **Keep the frontmatter `description` at or under 1024 characters.** This is the Agent Skills
+  spec limit; a longer description makes the whole skill invalid and it is silently dropped (it
+  just won't appear in the available skills list). `claude plugin validate` does NOT catch this —
+  it only validates `marketplace.json`. This is the single most common cause of a skill going
+  missing here (press-release-audit's description grew to 1164 chars and vanished). Aim for ~800
+  and leave headroom. Check every skill's length before committing:
+  ```
+  for f in ../skills/*/SKILL.md; do python3 -c "import re,yaml;t=open('$f').read();print(len(yaml.safe_load(re.match(r'^---\n(.*?)\n---',t,re.S).group(1))['description']),'$f')"; done
+  ```
 - **Keep the frontmatter `description` parser-safe and pure ASCII:** no `&`, no angle brackets
-  `< >`, no square brackets `[ ]`, and no non-ASCII characters — especially em-dashes (`—`), en-dashes
-  (`–`), or smart/curly quotes (`“ ” ‘ ’`). The plugin directory's frontmatter parser chokes on any
-  of these and silently skips the whole skill (it just won't appear in the available skills list).
-  Use plain words and ASCII punctuation instead: write "for a brand" rather than `<brand>`, spell out
-  sheet/board names without brackets, and use a plain hyphen `-`, a comma, or reworded phrasing
-  instead of an em-dash. These characters are fine in the SKILL.md **body** and in `references/`,
-  just not in the frontmatter description. (This has now bitten three skills — an em-dash regressed
-  press-release-audit even after the bracket rule was in place, so check with
-  `grep -nP '[&<>\[\]]|[^\x00-\x7F]'` on the frontmatter before committing.)
+  `< >`, no square brackets `[ ]`, and no non-ASCII characters (em-dashes `—`, en-dashes `–`,
+  smart/curly quotes `“ ” ‘ ’`). The frontmatter parser can choke on these and skip the skill. Use
+  plain words and ASCII punctuation: write "for a brand" rather than `<brand>`, spell out
+  sheet/board names without brackets, and use a plain hyphen `-` or a comma instead of an em-dash.
+  These characters are fine in the SKILL.md **body** and in `references/`, just not in the
+  frontmatter. Check with `grep -nP '[&<>\[\]]|[^\x00-\x7F]'` on the frontmatter before committing.
 
 Guidelines for the body:
 

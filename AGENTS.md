@@ -53,23 +53,32 @@ directories. Do not "simplify" by moving the plugin to the root, even for a sing
 
 ## The #2 trap: a skill silently missing from the available-skills list
 
-If a skill isn't detected (it just never appears), the cause is almost always its
-`SKILL.md` **YAML frontmatter `description`**. The plugin directory's frontmatter parser chokes on
-`&`, angle brackets `< >`, square brackets `[ ]`, or **any non-ASCII character** — em-dashes (`—`),
-en-dashes (`–`), and smart/curly quotes (`“ ” ‘ ’`) — and **silently skips the whole skill** with no
-error. The other skills in the same plugin still load, so it looks like a per-skill glitch.
+If one skill isn't detected (it just never appears, while its siblings load fine), the cause is
+its `SKILL.md` **YAML frontmatter**. The skill is silently rejected with no error. Two distinct
+causes, in order of how often they've bitten this repo:
 
-This has recurred multiple times (an em-dash regressed `press-release-audit` even after the bracket
-rule was documented). Before committing any SKILL.md, check the frontmatter block:
+1. **`description` over 1024 characters (most common here).** The Agent Skills spec caps
+   `description` at **1024 chars**; a longer one makes the whole skill invalid and it is dropped.
+   `claude plugin validate` does **not** catch this — it only validates `marketplace.json`, not
+   each `SKILL.md`. This is what actually broke `press-release-audit` (its description had grown to
+   1164 chars). Keep descriptions comfortably under 1024 — the working skills here sit around 820.
+2. **Parser-hostile characters in `description`.** Avoid `&`, angle brackets `< >`, square
+   brackets `[ ]`, and non-ASCII (em-dashes `—`, en-dashes `–`, smart quotes `“ ” ‘ ’`). Use plain
+   ASCII. (These are fine in the SKILL.md **body** and in `references/` — only the frontmatter is
+   strict.)
+
+Before committing any SKILL.md, check both at once:
 
 ```
-grep -nP '[&<>\[\]]|[^\x00-\x7F]' <skill>/SKILL.md   # inspect the frontmatter matches
+# 1) length of each skill's description (must be <= 1024)
+for f in studiohawk-dpr-toolkit/skills/*/SKILL.md; do \
+  python3 -c "import re,yaml,sys;t=open('$f').read();d=yaml.safe_load(re.match(r'^---\n(.*?)\n---',t,re.S).group(1));print(len(d['description']),'$f')"; done
+# 2) hazardous chars in frontmatter
+grep -nP '[&<>\[\]]|[^\x00-\x7F]' studiohawk-dpr-toolkit/skills/*/SKILL.md
 ```
 
-Fix by rewording with plain ASCII (plain hyphen `-`, comma, or restructured phrasing). These
-characters are fine in the SKILL.md **body** and in `references/` — only the frontmatter
-`description` is parsed strictly. See `studiohawk-dpr-toolkit/docs/ADDING-WORKFLOWS.md` for the full
-rule.
+Fix by trimming/rewording the `description` in plain ASCII. See
+`studiohawk-dpr-toolkit/docs/ADDING-WORKFLOWS.md` for the full rule.
 
 ## Deploying changes
 

@@ -13,7 +13,7 @@
       "name": "studiohawk-dpr-toolkit",
       "source": "./studiohawk-dpr-toolkit",
       "description": "StudioHawk DPR Toolkit: the internal suite of digital PR skills (a guided weekly client update from brand setup to scheduled drafts, and a press-release fact-check/audit) that pull from Slack, Monday.com, Google Drive, and Gmail.",
-      "version": "0.3.2",
+      "version": "0.3.3",
       "author": {
         "name": "StudioHawk"
       },
