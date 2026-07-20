@@ -77,7 +77,8 @@ only when needed.
 - Add the new skill to the plugin `README.md` "Skills" list and to the marketplace `README.md`.
 - Bump the `version` in `.claude-plugin/plugin.json` and in the marketplace entry if you want a
   clean update signal.
-- Commit and push. Teammates pick it up with `/plugin marketplace update studiohawk-dpr-toolkit`.
+- Commit and push. Teammates pick it up from the desktop app under **Customize → Plugins** →
+  **Update** on the **studiohawk-dpr-toolkit** marketplace.
 
 ## Connectors
 

@@ -51,7 +51,7 @@ edits the doc and never posts to Slack.
 
 This plugin is designed to grow. Additional DPR automations will be added as new skills here (e.g.
 outreach/pitch tracking, coverage reporting, media-list building). See
-[docs/ADDING-WORKFLOWS.md](docs/ADDING-WORKFLOWS.md) for how to add one.
+[studiohawk-dpr-toolkit/docs/ADDING-WORKFLOWS.md](studiohawk-dpr-toolkit/docs/ADDING-WORKFLOWS.md) for how to add one.
 
 ## Connectors
 
@@ -116,17 +116,20 @@ its marketplace entirely to delete the source.
 
 ## Repository layout
 
-This repo is both the marketplace and the single plugin it lists — the plugin lives at the repo
-root (the marketplace manifest points its `source` at `.`).
+This repo is the marketplace at its root; the plugin it lists lives in a same-named subfolder
+(the marketplace manifest points its `source` at `./studiohawk-dpr-toolkit`). The marketplace and
+plugin manifests are kept in separate `.claude-plugin/` directories — required for the desktop app
+to sync the marketplace.
 
 ```
-studiohawk-dpr-toolkit/
+.claude-plugin/
+└── marketplace.json             # marketplace manifest (lists the plugin below)
+studiohawk-dpr-toolkit/          # the plugin (source: ./studiohawk-dpr-toolkit)
 ├── .claude-plugin/
-│   ├── marketplace.json     # marketplace manifest (lists this plugin, source ".")
-│   └── plugin.json          # plugin manifest
-├── .mcp.json                # connector declarations (Slack, monday.com, Drive, Gmail)
-├── docs/ADDING-WORKFLOWS.md # how to add a new DPR workflow skill
-├── skills/                  # weekly-client-update, press-release-audit
-├── README.md
-└── USAGE.md                 # plain-English team guide
+│   └── plugin.json              # plugin manifest
+├── .mcp.json                    # connector declarations (Slack, monday.com, Drive, Gmail)
+├── docs/ADDING-WORKFLOWS.md     # how to add a new DPR workflow skill
+└── skills/                      # weekly-client-update, press-release-audit
+README.md
+USAGE.md                         # plain-English team guide
 ```
